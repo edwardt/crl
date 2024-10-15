@@ -28,6 +28,19 @@ openssl req -new -key cert.key -out cert.csr
 touch certindex
 echo 01 > certserial
 echo 01 > crlnumber
-* create ca.conf and paste the following. Replace "test.com" with your desired certificate Common Name:
+* create ca.conf and paste the following. Replace "test.com" with your desired certificate Common Name
+See ca.conf
+* Sign your request
+openssl ca -batch -config ca.conf -notext -in cert.csr -out cert.crt
+* Export to a PKCS12 format:
+openssl pkcs12 -export -out cert.p12 -inkey cert.key -in cert.crt -chain -CAfile ca.crt
+* Create the CRL file
+openssl ca -config ca.conf -gencrl -keyfile ca.key -cert ca.crt -out rt.crl.pem
+openssl crl -inform PEM -in rt.crl.pem -outform DER -out root.crl
+rm rt.crl.pem
+* Convert the CRL file to PEM format:
+openssl crl -in root.crl -inform DER -out crl.pem
+
+
 
 
