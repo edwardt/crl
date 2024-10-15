@@ -28,4 +28,6 @@ openssl req -new -key cert.key -out cert.csr
 touch certindex
 echo 01 > certserial
 echo 01 > crlnumber
+* create ca.conf and paste the following. Replace "test.com" with your desired certificate Common Name:
+
 
