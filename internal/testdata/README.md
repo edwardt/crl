@@ -18,7 +18,7 @@ Test Data
 Steps to create CRL
 * generate CA key:
 openssl genrsa -out ca.key 4096
-* ceate self-signed root CA
+* create self-signed root CA
 openssl req -new -x509 -days 1826 -key ca.key -out ca.crt
 * private key for your certificate
 openssl genrsa -out cert.key 4096
@@ -40,6 +40,8 @@ openssl crl -inform PEM -in rt.crl.pem -outform DER -out root.crl
 rm rt.crl.pem
 * Convert the CRL file to PEM format:
 openssl crl -in root.crl -inform DER -out crl.pem
+
+
 
 
 
