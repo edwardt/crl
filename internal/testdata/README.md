@@ -23,7 +23,7 @@ openssl req -new -x509 -days 1826 -key ca.key -out ca.crt
 * private key for your certificate
 openssl genrsa -out cert.key 4096
 * make certificate request
-openssl req -new -key cert.key -out cert.csr
+openssl req -new -key cert.key -out cert.csr -sha256
 * create index
 touch certindex
 echo 01 > certserial
