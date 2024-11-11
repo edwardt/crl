@@ -41,10 +41,10 @@ subject="/C=$country/ST=$stateOrProvinceName/O=$organization/OU=$unit/CN=$fullNa
 # 1.1 install root-ca directory & database
 ######################################
 
-mkdir $fullNameCA
+mkdir -p $fullNameCA
 cd $fullNameCA
 cp ../../openssl.cnf .
-mkdir private certs newcerts
+mkdir -p private certs newcerts
 # database file indext.txt
 touch index.txt
 
@@ -87,10 +87,10 @@ export crlUrl=http://localhost:8080/sample/$fullNameSubCA.crl
 ######################################
 
 cd ..
-mkdir $fullNameSubCA
+mkdir -p $fullNameSubCA
 cd $fullNameSubCA
 cp ../../openssl.cnf .
-mkdir private certs newcerts csr crl crl/ok crl/revoked
+mkdir -p private certs newcerts csr crl crl/ok crl/revoked
 # database file indext.txt
 touch index.txt
 
@@ -146,7 +146,7 @@ openssl crl -in crl/ok/$fullNameSubCA.crl -noout -text
 # 2.6 copy certificate and crl to results
 ######################################
 cp certs/$fullNameSubCA.cer ../../$resultDir
-mkdir ../../$resultDir/crl-ok
+mkdir -p ../../$resultDir/crl-ok
 cp crl/ok/$fullNameSubCA.crl ../../$resultDir/crl-ok
 
 
@@ -170,10 +170,10 @@ do
     ######################################
 
     cd ..
-    mkdir $fullNameClient
+    mkdir -p $fullNameClient
     cd $fullNameClient
     cp ../../openssl.cnf .
-    mkdir private certs csr
+    mkdir -p private certs csr
 
     ######################################
     # 3.2 create private key
@@ -255,5 +255,5 @@ echo $fullNameSubCA revoked crl:
 openssl crl -in crl/revoked/$fullNameSubCA.crl -noout -text
 
 # copy
-mkdir ../../$resultDir/crl-revoked
+mkdir -p ../../$resultDir/crl-revoked
 cp crl/revoked/$fullNameSubCA.crl ../../$resultDir/crl-revoked
