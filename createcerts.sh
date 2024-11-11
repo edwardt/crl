@@ -15,7 +15,7 @@ baseDir=temp
 resultDir=result
 
 rm -r $baseDir $resultDir
-mkdir $baseDir $resultDir
+mkdir -p $baseDir $resultDir
 cd $baseDir
 
 ######################################
