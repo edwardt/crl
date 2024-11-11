@@ -20,12 +20,13 @@ cd $baseDir
 
 ######################################
 # 0. Global variables
+# some dmmy test parameters
 ######################################
-country=DE
-stateOrProvinceName=NRW
-organization=arvato
-export crlUrl="will be set later"
-export email="will be set later"
+country=US
+stateOrProvinceName=CA
+organization=splunk
+export crlUrl="http://crl.test.com/crl"
+export email="test@test.com"
 passw=b2bbp
 
 ######################################
